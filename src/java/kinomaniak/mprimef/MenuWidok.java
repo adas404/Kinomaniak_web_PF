@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import kinomaniak.beans.Attraction;
 import kinomaniak.beans.CRoom;
 import kinomaniak.controllers.BeanManager;
+import org.primefaces.component.panelmenu.PanelMenu;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
