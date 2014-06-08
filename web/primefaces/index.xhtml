@@ -28,13 +28,16 @@
                 <p:layoutUnit position="center">
                                         <h:form>
 
-                    <h:panelGrid columns="2" cellpadding="5">
+                    <h:panelGrid columns="2" cellpadding="6">
                     <p:outputLabel value="Login:" />
                     <p:inputText id="login" value="#{user.name}"/>
                     
                     <p:outputLabel value="Password:" />
                     <p:password id="nonFeedback" value="#{user.password}" />
+                
                     <p:commandButton value="Login"  action="#{user.checkUser(beanManager.users)}"  />
+                    
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     </h:panelGrid>
                     </h:form>
                 </p:layoutUnit>

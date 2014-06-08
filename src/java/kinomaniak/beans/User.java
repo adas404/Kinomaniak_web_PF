@@ -9,7 +9,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Objects;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import org.jdom2.Element;
 
@@ -247,6 +249,7 @@ public class User implements Serializable{
             }            
         }
         this.logout();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Uwaga!", "Złe dane logowania"));     
         return "ERR";
     }
 
