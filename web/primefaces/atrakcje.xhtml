@@ -28,7 +28,7 @@
 
                 <p:layoutUnit position="west" size="200" header="Wybierz" collapsible="true">
                     <h:form>
-                        <p:menu model="#{menuWidok.model}" />
+                        <p:panelMenu model="#{menuWidok.model}" />
                     </h:form>
                 </p:layoutUnit> 
 
@@ -36,7 +36,7 @@
                     <h:form>
                         <p:fieldset legend="Cena" toggleable="true" toggleSpeed="500">             
                             <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText value="#{menuWidok.attractionprice}"></h:outputText>
+                                <h:outputText value="costam"> #{atrakcjeWidok.cena}</h:outputText>
                         </h:panelGrid>
                         </p:fieldset>
                     </h:form>

@@ -6,7 +6,9 @@
 
 package kinomaniak.mprimef;
 
+import java.io.IOException;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import kinomaniak.beans.Attraction;
 import kinomaniak.beans.CRoom;
 import kinomaniak.controllers.BeanManager;
@@ -22,6 +24,7 @@ import org.primefaces.model.menu.MenuModel;
  */
 public class MenuWidok {
 
+    
     public MenuModel getModel() {
         return model;
     }
@@ -40,14 +43,20 @@ public class MenuWidok {
     private MenuModel model;
     private BeanManager beanManager;
 
-    public float getAttractionprice() {
-        return attractionprice;
+    public int getAttraction_id() {
+        return attraction_id;
     }
 
-    public void setAttractionprice(float attractionprice) {
-        this.attractionprice = attractionprice;
+    public void setAttraction_id(int attraction_id) {
+        this.attraction_id = attraction_id;
     }
-    private float attractionprice;
+    private int attraction_id;
+        
+    public void doAtrakcji(String id) throws IOException{
+       System.out.println(id);
+       this.setAttraction_id(Integer.parseInt(id));
+       
+    }
     /**
      * Creates a new instance of MenuWidok
      */
@@ -57,16 +66,18 @@ public class MenuWidok {
         DefaultSubMenu sale = new DefaultSubMenu("Sale");
         for (CRoom c: this.getBeanManager().getRooms()){
             DefaultMenuItem citem = new DefaultMenuItem("Sala"+c.getId());
+            citem.setId(Integer.toString(c.getID()));
             citem.setAjax(false); 
             sale.addElement(citem);
         }
         model.addElement(sale);
         DefaultSubMenu atrakcje = new DefaultSubMenu("Atrakcje");
         for (Attraction a:this.getBeanManager().getAttractions()){
-            this.setAttractionprice(a.getPrice());
             DefaultMenuItem atritem = new DefaultMenuItem(a.getName());
-            atritem.setAjax(false);
-            atritem.setHref("atrakcje.xhtml");
+            atritem.setId(Integer.toString(a.getId()));
+            atritem.setAjax(false); 
+            String command = String.format("#{menuWidok.doAtrakcji('%d')}", a.getId());
+            atritem.setCommand(command);
             atrakcje.addElement(atritem);
             
         }
