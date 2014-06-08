@@ -29,6 +29,10 @@
             <from-action>#{menuWidok.doAtrakcji('%d')}</from-action>
             <to-view-id>/primefaces/atrakcje.xhtml</to-view-id>
         </navigation-case>
+         <navigation-case>
+            <from-action>#{menuWidok.doProduktu('%d')}</from-action>
+            <to-view-id>/primefaces/produkty.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>passwordView</managed-bean-name>
@@ -58,5 +62,26 @@
         <managed-bean-name>atrakcjeWidok</managed-bean-name>
         <managed-bean-class>kinomaniak.mprimef.AtrakcjeWidok</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>beanManager</property-name>
+            <value>#{beanManager}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>menuWidok</property-name>
+            <value>#{menuWidok}</value>
+        </managed-property>       
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>produktyWidok</managed-bean-name>
+        <managed-bean-class>kinomaniak.mprimef.ProduktyWidok</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+           <managed-property>
+            <property-name>beanManager</property-name>
+            <value>#{beanManager}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>menuWidok</property-name>
+            <value>#{menuWidok}</value>
+        </managed-property>     
     </managed-bean>
 </faces-config>

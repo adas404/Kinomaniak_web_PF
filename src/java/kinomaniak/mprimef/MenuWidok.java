@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import kinomaniak.beans.Attraction;
 import kinomaniak.beans.CRoom;
+import kinomaniak.beans.Product;
 import kinomaniak.controllers.BeanManager;
 import org.primefaces.component.panelmenu.PanelMenu;
 import org.primefaces.model.menu.DefaultMenuItem;
@@ -43,6 +44,15 @@ public class MenuWidok {
     private MenuModel model;
     private BeanManager beanManager;
 
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
+    }
+    private int product_id;
+
     public int getAttraction_id() {
         return attraction_id;
     }
@@ -52,10 +62,15 @@ public class MenuWidok {
     }
     private int attraction_id;
         
-    public void doAtrakcji(String id) throws IOException{
+    public String doAtrakcji(String id) throws IOException{
        System.out.println(id);
        this.setAttraction_id(Integer.parseInt(id));
-       
+       return "atrakcje";
+    }
+    public String doProduktu(String id) throws IOException{
+       System.out.println(id);
+       this.setProduct_id(Integer.parseInt(id));
+       return "produkty";
     }
     /**
      * Creates a new instance of MenuWidok
@@ -78,13 +93,21 @@ public class MenuWidok {
             atritem.setAjax(false); 
             String command = String.format("#{menuWidok.doAtrakcji('%d')}", a.getId());
             atritem.setCommand(command);
+            
             atrakcje.addElement(atritem);
             
         }
         model.addElement(atrakcje);
+        DefaultSubMenu produkty = new DefaultSubMenu("Produkty");
+        for (Product p:this.getBeanManager().getProducts()){
+            DefaultMenuItem pitem = new DefaultMenuItem(p.getName());
+            pitem.setAjax(false);
+            String pcommand = String.format("#{menuWidok.doProduktu('%d')}", p.getId());
+            pitem.setCommand(pcommand); 
+            produkty.addElement(pitem);
+        }
         DefaultSubMenu raporty = new DefaultSubMenu("Raporty");
         DefaultSubMenu paneladmina = new DefaultSubMenu("Panel Administracyjny");
-        DefaultSubMenu produkty = new DefaultSubMenu("Produkty");
         model.addElement(produkty);        
         model.addElement(raporty);
         model.addElement(paneladmina);

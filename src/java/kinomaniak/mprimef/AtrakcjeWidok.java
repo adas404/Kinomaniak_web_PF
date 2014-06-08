@@ -6,6 +6,7 @@
 
 package kinomaniak.mprimef;
 
+import javax.annotation.PostConstruct;
 import kinomaniak.beans.Attraction;
 import kinomaniak.controllers.BeanManager;
 
@@ -21,19 +22,15 @@ public class AtrakcjeWidok {
     private BeanManager beanManager;
     private MenuWidok menuWidok;
 
-    public int getCena() {
-        for (Attraction a : this.getBeanManager().getAttractions()){
-            System.out.println("yes yes yes");
-            if(Integer.toString(a.getId()).equals(Integer.toString(this.getMenuWidok().getAttraction_id())) ){
-            }
-        }
+    public float getCena() {
+        
         return cena;
     }
 
-    public void setCena(int cena) {
+    public void setCena(float cena) {
         this.cena = cena;
     }
-    private int cena;
+    private float cena;
 
     public BeanManager getBeanManager() {
         return beanManager;
@@ -54,5 +51,13 @@ public class AtrakcjeWidok {
     public AtrakcjeWidok() {
         
     }
+    @PostConstruct
+    public void init(){
+        for (Attraction a:this.getBeanManager().getAttractions()){
+            System.out.println("yes yes yes");
+                 if(Integer.toString(a.getId()).equals(Integer.toString(this.getMenuWidok().getAttraction_id())) ){
+                    setCena(a.getPrice());
+            }
+    }
     
-}
+}}
