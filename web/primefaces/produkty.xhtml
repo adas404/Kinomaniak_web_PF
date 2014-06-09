@@ -39,7 +39,7 @@
                             <h:panelGrid columns="2" cellpadding="10">
                                 <h:outputText value="Cena: #{produktyWidok.cena}" />
                                 <h:outputText value="Ilość na magazynie: #{produktyWidok.ilosc}" />
-                                   <p:commandButton value="Sprzedaj" action="#{BeanManager.buyProduct('4')}" ></p:commandButton>                                
+                                <p:commandButton value="Sprzedaj" action="#{beanManager.buyProduct(menuWidok.product_id)}" ></p:commandButton>                                
                             </h:panelGrid>
                         </p:panel>
                     </h:form>

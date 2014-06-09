@@ -4,9 +4,9 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <managed-bean>
-        <managed-bean-name>BeanManager</managed-bean-name>
-        <managed-bean-class>kinomaniak.controllers.BeanManager</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-name>beanManager</managed-bean-name>
+        <managed-bean-class>kinomaniak.controllers.beanManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>user</managed-bean-name>
@@ -38,11 +38,11 @@
         <managed-bean-name>passwordView</managed-bean-name>
         <managed-bean-class>kinomaniak.mprimef.PasswordView</managed-bean-class>
     
-        <managed-bean-scope>request</managed-bean-scope></managed-bean>
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
     <managed-bean>
         <managed-bean-name>menuWidok</managed-bean-name>
         <managed-bean-class>kinomaniak.mprimef.MenuWidok</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-scope>session</managed-bean-scope>
         <managed-property>
             <property-name>beanManager</property-name>
             <value>#{beanManager}</value>
@@ -51,17 +51,17 @@
     <managed-bean>
         <managed-bean-name>powitanie</managed-bean-name>
         <managed-bean-class>kinomaniak.mprimef.Powitanie</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>attractionView</managed-bean-name>
         <managed-bean-class>kinomaniak.mprimef.AttractionView</managed-bean-class>
     
-        <managed-bean-scope>request</managed-bean-scope></managed-bean>
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
     <managed-bean>
         <managed-bean-name>atrakcjeWidok</managed-bean-name>
         <managed-bean-class>kinomaniak.mprimef.AtrakcjeWidok</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-scope>session</managed-bean-scope>
         <managed-property>
             <property-name>beanManager</property-name>
             <value>#{beanManager}</value>
@@ -74,7 +74,7 @@
     <managed-bean>
         <managed-bean-name>produktyWidok</managed-bean-name>
         <managed-bean-class>kinomaniak.mprimef.ProduktyWidok</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-scope>session</managed-bean-scope>
            <managed-property>
             <property-name>beanManager</property-name>
             <value>#{beanManager}</value>
