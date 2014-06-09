@@ -20,6 +20,15 @@ public class ProduktyWidok {
     private float cena;
     private String nazwa;
 
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
+    }
+    private int product_id;
+
     public int getIlosc() {
         return ilosc;
     }
@@ -72,6 +81,7 @@ public class ProduktyWidok {
                     setCena(p.getPrice());
                     setNazwa(p.getName());
                     setIlosc(p.getCount());
+                    setProduct_id(p.getId());
             }
     }
 }

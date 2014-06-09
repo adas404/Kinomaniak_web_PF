@@ -34,14 +34,19 @@
 
                 <p:layoutUnit position="center">
                     <h:form>
-                        <p:growl id="msgs" showDetail="true" />
-                        <p:panel id="basic" header="${produktyWidok.nazwa}">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText value="Cena: #{produktyWidok.cena}" />
-                                <h:outputText value="Ilość na magazynie: #{produktyWidok.ilosc}" />
-                                   <p:commandButton value="Sprzedaj" action="#{BeanManager.buyProduct('4')}" ></p:commandButton>                                
-                            </h:panelGrid>
-                        </p:panel>
+                        <h:panelGrid columns="2" cellpadding="10">
+
+                            <p:selectManyButton style="width: 500"> 
+                                    <c:forEach begin="1" end="10">
+                                        <f:selectItem itemLabel="b" itemValue="b"  />
+                                            <c:forEach begin="1" end="10">
+
+                                                <f:selectItem itemLabel="b" itemValue="b" />
+
+                                            </c:forEach>
+                                    </c:forEach>    
+                                </p:selectManyButton>   
+                        </h:panelGrid>      
                     </h:form>
                 </p:layoutUnit>
 
