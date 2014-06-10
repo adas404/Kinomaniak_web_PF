@@ -6,7 +6,7 @@
     <managed-bean>
         <managed-bean-name>beanManager</managed-bean-name>
         <managed-bean-class>kinomaniak.controllers.BeanManager</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-scope>request</managed-bean-scope>  
     </managed-bean>
     <managed-bean>
         <managed-bean-name>user</managed-bean-name>
@@ -46,7 +46,7 @@
         <managed-property>
             <property-name>beanManager</property-name>
             <value>#{beanManager}</value>
-        </managed-property>    
+        </managed-property>   
     </managed-bean>
     <managed-bean>
         <managed-bean-name>powitanie</managed-bean-name>

@@ -19,11 +19,8 @@ import kinomaniak.mprimef.MenuWidok;
  *
  * @author Jakub
  */
-@Named(value = "beanManager")
-@Dependent
-@ManagedBean
+
 public class BeanManager {
-    @ManagedProperty(value="#{menuWidok}")
     DBConnector db;
     ArrayList<Movie> movies = new ArrayList<Movie>();
     ArrayList<Attraction> attractions = new ArrayList<Attraction>();
@@ -34,12 +31,13 @@ public class BeanManager {
     ArrayList<Ticket> tickets = new ArrayList<Ticket>();
     ArrayList<User> users = new ArrayList<User>();
     ArrayList<CRoom> rooms = new ArrayList<CRoom>();
+    
     public MenuWidok getMenuWidok() {
         return menuWidok;
     }
 
     public void setMenuWidok(MenuWidok menuWidok) {
-        this.menuWidok = menuWidok;
+       this.menuWidok = menuWidok;
     }
     private MenuWidok menuWidok;
     
@@ -78,7 +76,9 @@ public class BeanManager {
 //    }
     
     public void buyProduct(){
-        Product pr = (Product)db.parser.load(db.getConnection(), "Product", this.getMenuWidok().getProduct_id()).get(0);
+        int idd =this.menuWidok.getProduct_id();
+        System.out.println("IDD:"+idd);
+        Product pr = (Product)db.parser.load(db.getConnection(), "Product", idd).get(0);
 //        pr.setCount(pr.getCount()-1);
         pr.buy();
 //        System.out.println(pr.getCount());

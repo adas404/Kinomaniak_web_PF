@@ -47,6 +47,7 @@ public class MenuWidok {
 
     public void setBeanManager(BeanManager beanManager) {
         this.beanManager = beanManager;
+        this.beanManager.setMenuWidok(this);
     }
     private MenuModel model;
     private BeanManager beanManager;
@@ -84,6 +85,7 @@ public class MenuWidok {
      */
     @PostConstruct
     public void init() {
+        setBeanManager(beanManager);
         model = new DefaultMenuModel();
         DefaultSubMenu sale = new DefaultSubMenu("Sale");
         for (CRoom c: this.getBeanManager().getRooms()){
