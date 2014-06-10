@@ -36,21 +36,21 @@
 
        
                 <p:layoutUnit position="center" style="text-align: center">
-                    <h:form>
-                        <p:growl id="msgs" showDetail="true" />
+                    <h:form id="formatka">
                         <p:panel id="basic" header="Produkty">
-                            <h:panelGrid columns="5" cellpadding="10" id="ot" >
-                                <c:forEach items="#{beanManager.products}" var="product" >
+                            <h:panelGrid columns="5" cellpadding="10"  >
+                                <ui:repeat value="#{beanManager.products}" var="product" >
                                     <p:fieldset legend="#{product.name}" toggleable="true" collapsed="false">
-                                        <h:panelGrid columns="2" cellpadding="5">
-                                            <h:outputText value="#{product.id}"></h:outputText>
-                                            <h:outputText value="Count: #{product.count}" rendered="true"></h:outputText>
-                                            <h:outputText value="Price: #{product.price}"></h:outputText>
-                                            <p:commandButton action="#{beanManager.buyProduct(product.id)}" actionListener="#{powitanie.saveMessage}" value="Sprzedaj" update="ot" rendered="#{product.count>0}">
+                                        <h:panelGrid columns="2" cellpadding="3" id="ppp">
+                                            <p:growl id="msgs" showDetail="true" life="2000"/>
+                                            <h:outputText value=""></h:outputText>
+                                            <h:outputText value="Ilość na magazynie: #{product.count}" rendered="true"></h:outputText>
+                                            <h:outputText value="Cena: #{product.price}"></h:outputText>
+                                            <p:commandButton action="#{beanManager.buyProduct(product.id)}" actionListener="#{powitanie.saveMessage}" value="Sprzedaj" update="ppp" rendered="#{product.count>0}">
                                             </p:commandButton>
                                         </h:panelGrid>
                                     </p:fieldset>
-                                 </c:forEach>                            
+                                </ui:repeat>                           
                             </h:panelGrid>
                         </p:panel>
                     </h:form>

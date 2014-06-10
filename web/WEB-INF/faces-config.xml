@@ -41,4 +41,9 @@
         <managed-bean-class>kinomaniak.mprimef.AttractionView</managed-bean-class>
     
         <managed-bean-scope>request</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>attractionKomunikat</managed-bean-name>
+        <managed-bean-class>kinomaniak.mprimef.AttractionKomunikat</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope></managed-bean>
 </faces-config>
