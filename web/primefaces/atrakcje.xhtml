@@ -3,7 +3,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <f:view contentType="text/html">
         <h:head>
@@ -14,31 +14,44 @@
         </h:head>
 
         <h:body>
+            <h:form id="menu" >
+                <p:stack icon="/icon/stack.png" expanded="true">
+                    <c:if test="#{user.UType == 2}">    
+                        <p:menuitem value="Raporty" icon="/icon/raporty.png" url="#" />
+                        <p:menuitem value="Panel Administracyjny" icon="/icon/paneladm.png" url="#" />
+                    </c:if>    
 
+                <p:menuitem value="Produkty" icon="/icon/produkty.png" url="produkty.xhtml"/>
+                <p:menuitem value="Atrakcje" icon="/icon/atrakcje.png" url="#"/>
+                <p:menuitem value="Sale" icon="/icon/sale.png" url="#"/>
+                
+                         
+              </p:stack>  
+            </h:form>
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="130" resizable="true" closable="true" collapsible="true">
+                <p:layoutUnit position="north" size="230" resizable="false" closable="false" collapsible="true">
                     Header
                 </p:layoutUnit>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
-                    #{user.utype}
-                </p:layoutUnit>
-
-                <p:layoutUnit position="west" size="200" header="Wybierz" collapsible="true">
+       
+                <p:layoutUnit position="center" style="text-align: center">
                     <h:form>
-                        <p:panelMenu model="#{menuWidok.model}" />
-                    </h:form>
-                </p:layoutUnit> 
-
-                <p:layoutUnit position="center">
-                    <h:form>
-                        <p:fieldset legend="Cena" toggleable="true" toggleSpeed="500">             
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText value="#{atrakcjeWidok.cena}"> </h:outputText>
-                        </h:panelGrid>
-                        </p:fieldset>
+                        <p:growl id="msgs" showDetail="true" />
+                        <p:panel id="basic" header="Atrakcje">
+                            <h:panelGrid columns="5" cellpadding="10" id="ot" >
+                                <c:forEach items="#{beanManager.attractions}" var="attraction" >
+                                    <p:fieldset legend="#{attraction.name}" toggleable="true" collapsed="false">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <h:outputText value="#{attraction.id}"></h:outputText>
+                                            <h:outputText value="Price: #{attraction.price}"></h:outputText>
+                                            <p:commandButton action="#{beanManager.buyProduct(product.id)}" value="Sprzedaj" update="ot" rendered="#{product.count>0}">
+                                            </p:commandButton>
+                                        </h:panelGrid>
+                                    </p:fieldset>
+                                 </c:forEach>                            
+                            </h:panelGrid>
+                        </p:panel>
                     </h:form>
                 </p:layoutUnit>
 

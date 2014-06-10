@@ -14,12 +14,20 @@ import javax.faces.context.FacesContext;
  * @author Adam
  */
 public class Powitanie {
+    private String message;
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
     /**
      * Creates a new instance of Powitanie
      */
    
-    public void init(){
+    public void saveMessage(){
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Cośtam", "Witamy w naszym serwisie do obsługi Parku Rozrywki KinomaniakEE"));
     }

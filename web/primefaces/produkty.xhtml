@@ -39,14 +39,17 @@
                     <h:form>
                         <p:growl id="msgs" showDetail="true" />
                         <p:panel id="basic" header="Produkty">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <c:forEach items="${beanManager.products}" var="product">
-                                    <h:outputText value="#{product.id}.#{product.name}"></h:outputText>
-                                    <h:outputText value="Count: #{product.count}"></h:outputText><br />
-                                    <h:outputText value="Price: #{product.price}"></h:outputText><br />
-                                    <h:form>
-                                        <p:commandButton action="#{beanManager.buyProduct(product.id)}" value="buy" rendered="#{product.count>0}"></p:commandButton>
-                                    </h:form>
+                            <h:panelGrid columns="5" cellpadding="10" id="ot" >
+                                <c:forEach items="#{beanManager.products}" var="product" >
+                                    <p:fieldset legend="#{product.name}" toggleable="true" collapsed="false">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <h:outputText value="#{product.id}"></h:outputText>
+                                            <h:outputText value="Count: #{product.count}" rendered="true"></h:outputText>
+                                            <h:outputText value="Price: #{product.price}"></h:outputText>
+                                            <p:commandButton action="#{beanManager.buyProduct(product.id)}" actionListener="#{powitanie.saveMessage}" value="Sprzedaj" update="ot" rendered="#{product.count>0}">
+                                            </p:commandButton>
+                                        </h:panelGrid>
+                                    </p:fieldset>
                                  </c:forEach>                            
                             </h:panelGrid>
                         </p:panel>
