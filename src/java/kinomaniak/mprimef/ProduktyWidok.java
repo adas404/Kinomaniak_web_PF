@@ -16,8 +16,6 @@ import kinomaniak.controllers.BeanManager;
  *
  * @author Adam
  */
-@Dependent
-@Named
 public class ProduktyWidok {
     private BeanManager beanManager;
     private MenuWidok menuWidok;
@@ -74,7 +72,7 @@ public class ProduktyWidok {
         this.nazwa = nazwa;
     }
     public void kupProdukt(){
-        this.getBeanManager().buyProduct(this.getProduct_id());
+   
     }
     /**
      * Creates a new instance of ProduktyWidok

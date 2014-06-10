@@ -10,17 +10,20 @@ import java.util.ArrayList;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import kinomaniak.beans.*;
 import kinomaniak.database.DBConnector;
+import kinomaniak.mprimef.MenuWidok;
 
 /**
  *
  * @author Jakub
  */
-//@Named(value = "beanManager")
+@Named(value = "beanManager")
 @Dependent
 @ManagedBean
 public class BeanManager {
+    @ManagedProperty(value="#{menuWidok}")
     DBConnector db;
     ArrayList<Movie> movies = new ArrayList<Movie>();
     ArrayList<Attraction> attractions = new ArrayList<Attraction>();
@@ -31,6 +34,14 @@ public class BeanManager {
     ArrayList<Ticket> tickets = new ArrayList<Ticket>();
     ArrayList<User> users = new ArrayList<User>();
     ArrayList<CRoom> rooms = new ArrayList<CRoom>();
+    public MenuWidok getMenuWidok() {
+        return menuWidok;
+    }
+
+    public void setMenuWidok(MenuWidok menuWidok) {
+        this.menuWidok = menuWidok;
+    }
+    private MenuWidok menuWidok;
     
     Integer id = -1;
 
@@ -66,8 +77,8 @@ public class BeanManager {
 //        this.initMovies(-1);
 //    }
     
-    public void buyProduct(int id){
-        Product pr = (Product)db.parser.load(db.getConnection(), "Product", id).get(0);
+    public void buyProduct(){
+        Product pr = (Product)db.parser.load(db.getConnection(), "Product", this.getMenuWidok().getProduct_id()).get(0);
 //        pr.setCount(pr.getCount()-1);
         pr.buy();
 //        System.out.println(pr.getCount());
