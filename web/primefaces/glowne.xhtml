@@ -14,6 +14,15 @@
         </h:head>
 
         <h:body>
+            <p:stack icon="/icon/stack.png" expanded="true">
+                <p:menuitem value="Panel Administracyjny" icon="/icon/paneladm.png" url="#" />
+                <p:menuitem value="Raporty" icon="/icon/raporty.png" url="#" />
+                <p:menuitem value="Produkty" icon="/icon/produkty.png" url="#"/>
+                <p:menuitem value="Atrakcje" icon="/icon/atrakcje.png" url="#"/>
+                <p:menuitem value="Sale" icon="/icon/sale.png" url="#"/>
+                
+                         
+              </p:stack>  
 
             <p:layout fullPage="true">
 
@@ -27,10 +36,7 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="200" header="Wybierz" collapsible="true">
-                    <h:form>
-                        <p:panelMenu model="#{menuWidok.model}" />
                         
-                    </h:form>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
@@ -39,7 +45,7 @@
                 </p:layoutUnit>
 
             </p:layout>
-
+            
         </h:body>
 
     </f:view>
