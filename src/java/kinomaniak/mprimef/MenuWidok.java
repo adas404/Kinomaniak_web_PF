@@ -7,8 +7,15 @@
 package kinomaniak.mprimef;
 
 import java.io.IOException;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.Conversation;
+import javax.enterprise.context.ConversationScoped;
+import javax.enterprise.context.Dependent;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 import kinomaniak.beans.Attraction;
 import kinomaniak.beans.CRoom;
 import kinomaniak.beans.Product;
@@ -111,6 +118,7 @@ public class MenuWidok {
         model.addElement(produkty);        
         model.addElement(raporty);
         model.addElement(paneladmina);
+ 
     }
     
 }

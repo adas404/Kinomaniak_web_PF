@@ -7,6 +7,8 @@
 package kinomaniak.mprimef;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.Dependent;
+import javax.inject.Named;
 import kinomaniak.beans.Product;
 import kinomaniak.controllers.BeanManager;
 
@@ -14,6 +16,8 @@ import kinomaniak.controllers.BeanManager;
  *
  * @author Adam
  */
+@Dependent
+@Named
 public class ProduktyWidok {
     private BeanManager beanManager;
     private MenuWidok menuWidok;
@@ -68,6 +72,9 @@ public class ProduktyWidok {
 
     public void setNazwa(String nazwa) {
         this.nazwa = nazwa;
+    }
+    public void kupProdukt(){
+        this.getBeanManager().buyProduct(this.getProduct_id());
     }
     /**
      * Creates a new instance of ProduktyWidok
