@@ -46,4 +46,13 @@
         <managed-bean-class>kinomaniak.mprimef.AttractionKomunikat</managed-bean-class>
     
         <managed-bean-scope>request</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>sprawdzaczTytulow</managed-bean-name>
+        <managed-bean-class>kinomaniak.mprimef.SprawdzaczTytulow</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property> 
+            <property-name>beanManager</property-name>
+            <value>#{beanManager}</value>
+        </managed-property>
+    </managed-bean>
 </faces-config>

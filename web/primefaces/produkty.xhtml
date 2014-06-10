@@ -17,13 +17,14 @@
             <h:form id="menu" >
                 <p:stack icon="/icon/stack.png" expanded="true">
                     <c:if test="#{user.UType == 2}">    
-                        <p:menuitem value="Raporty" icon="/icon/raporty.png" url="#" />
-                        <p:menuitem value="Panel Administracyjny" icon="/icon/paneladm.png" url="#" />
+                        <p:menuitem value="Raporty" icon="/icon/raporty.png" url="raporty.xhtml" />
+                        <p:menuitem value="Panel Administracyjny" icon="/icon/paneladm.png" url="panel.xhtml" />
                     </c:if>    
 
                 <p:menuitem value="Produkty" icon="/icon/produkty.png" url="produkty.xhtml"/>
-                <p:menuitem value="Atrakcje" icon="/icon/atrakcje.png" url="#"/>
-                <p:menuitem value="Sale" icon="/icon/sale.png" url="#"/>
+                <p:menuitem value="Atrakcje" icon="/icon/atrakcje.png" url="atrakcje.xhtml"/>
+                <p:menuitem value="Rezerwacje" icon="/icon/sale.png" url="rezerwacje.xhtml"/>
+                <p:menuitem value="Sale" icon="/icon/sale.png" url="sale.xhtml"/>
                 
                          
               </p:stack>  
