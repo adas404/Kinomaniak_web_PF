@@ -56,6 +56,9 @@ public class WidokSala {
         return false;
     }
    
+    public void wyswietlPrzekazane(){
+        System.out.println(selectedOption);
+    }
 
     public String getPassedParameter() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -72,7 +75,8 @@ public class WidokSala {
     @PostConstruct
     public void init(){
         selectedOption = new ArrayList<Integer>();
-        int id = Integer.parseInt(this.getPassedParameter());
+        int id = 0;
+        id = Integer.parseInt(this.getPassedParameter());
         selectedOption = beanManager.getResSeats(id);
 
 
