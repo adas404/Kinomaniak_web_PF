@@ -40,13 +40,13 @@
                     <h:form id="formatka">
                            <h:panelGrid columns="2" >
                                <p:selectManyButton value="#{widokSala.selectedOption}" id="butony">
-                                   <f:selectItems value="#{widokSala.selectedOption}"/>
+                                   <c:forEach var="i" begin="1" end="100">
+                                       <f:selectItem itemLabel="#{i}" itemValue="#{i}" itemDisabled="#{widokSala.czyNaLiscie(i)}"/>
+                                   </c:forEach>
                                </p:selectManyButton>
                              </h:panelGrid>
-                               <p:commandButton value="coats" update="formatka" action="#{widokSala.ustawZaznaczone()}" />
-                               <p:dataList id="display" value="#{widokSala.selectedOption}" var="font" emptyMessage="No fonts selected">
-            <h:outputText value="#{font}" style="font-weight: bold" />
-        </p:dataList>
+                        
+                             
                     </h:form>
                 </p:layoutUnit>
 

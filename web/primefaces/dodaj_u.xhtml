@@ -70,9 +70,9 @@
                         <p:outputLabel value="Nazwa:"/>
                         <p:inputText id="login" /> 
                         <p:outputLabel value="Hasło:"/>
-                        <p:inputText />
+                        <p:password id="feedback"  feedback="true" />
                         <p:outputLabel value="Typ:" />
-                        <p:selectOneMenu id="typ" value="#{widokSala.selectedOption}"> 
+                        <p:selectOneMenu id="typ" > 
                             <f:selectItem itemLabel="Normalny" itemValue="1" />
                             <f:selectItem itemLabel="Administrator" itemValue="2" />
                         </p:selectOneMenu>

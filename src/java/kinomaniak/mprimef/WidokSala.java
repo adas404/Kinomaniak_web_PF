@@ -39,16 +39,6 @@ public class WidokSala {
     }
     @ManagedProperty("#{beanManager}")
     private BeanManager beanManager;
-    @ManagedProperty("#{param.parameter}")
-    private String parameter;
-
-    public String getParameter() {
-        return parameter;
-    }
-
-    public void setParameter(String parameter) {
-        this.parameter = parameter;
-    }
     
     
     public BeanManager getBeanManager() {
@@ -59,10 +49,13 @@ public class WidokSala {
         this.beanManager = beanManager;
     }
     
-    public String doSali(int id){
-        idshow = id;
-        return "sala?showid=id";
+    public boolean czyNaLiscie(int miejsce){
+        for (int i=0;i<selectedOption.size();i++)
+            if(miejsce == selectedOption.get(i))
+                return true;
+        return false;
     }
+   
 
     public String getPassedParameter() {
         FacesContext facesContext = FacesContext.getCurrentInstance();

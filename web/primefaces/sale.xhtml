@@ -40,7 +40,7 @@
                     <h:form id="formatka">
                         <ui:repeat value="#{beanManager.shows}" var="show">
                            <h:panelGrid columns="2" >
-                               <p:commandButton onclick="window.open('sala.xhtml?id=#{show.ID}'); return false" value="Film:#{show.movie.name} Godzina:#{show.formatted} Sala: #{show.room.id}"></p:commandButton>
+                               <p:commandButton onclick="location.reload();location.href='sala.xhtml?id=#{show.ID}'; return false" value="Film:#{show.movie.name} Godzina:#{show.formatted} Sala: #{show.room.id}"></p:commandButton>
                            </h:panelGrid>
                         </ui:repeat>
                        
