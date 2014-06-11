@@ -15,6 +15,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.ws.rs.Produces;
@@ -76,7 +77,8 @@ public class WidokSala {
     public void init(){
         selectedOption = new ArrayList<Integer>();
         int id = 0;
-        id = Integer.parseInt(this.getPassedParameter());
+        if (this.getPassedParameter()!=null)
+            id = Integer.parseInt(this.getPassedParameter());
         selectedOption = beanManager.getResSeats(id);
 
 
