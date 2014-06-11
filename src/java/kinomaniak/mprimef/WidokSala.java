@@ -15,6 +15,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.ws.rs.Produces;
 import kinomaniak.beans.Res;
@@ -38,7 +39,18 @@ public class WidokSala {
     }
     @ManagedProperty("#{beanManager}")
     private BeanManager beanManager;
+    @ManagedProperty("#{param.parameter}")
+    private String parameter;
 
+    public String getParameter() {
+        return parameter;
+    }
+
+    public void setParameter(String parameter) {
+        this.parameter = parameter;
+    }
+    
+    
     public BeanManager getBeanManager() {
         return beanManager;
     }
@@ -49,14 +61,27 @@ public class WidokSala {
     
     public String doSali(int id){
         idshow = id;
-        return "sala";
+        return "sala?showid=id";
     }
 
+    public String getPassedParameter() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        this.passedParameter = (String) facesContext.getExternalContext().
+                getRequestParameterMap().get("id");
+        return this.passedParameter;
+    }
+
+    public void setPassedParameter(String passedParameter) {
+        this.passedParameter = passedParameter;
+    }
+    private String passedParameter;
+    
     @PostConstruct
     public void init(){
         selectedOption = new ArrayList<Integer>();
-        selectedOption = beanManager.getResSeats(idshow);
-         System.out.println(idshow);
+        int id = Integer.parseInt(this.getPassedParameter());
+        selectedOption = beanManager.getResSeats(id);
+
 
     }
     /**
