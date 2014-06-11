@@ -8,6 +8,7 @@ package kinomaniak.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedProperty;
 import kinomaniak.beans.*;
 import kinomaniak.database.DBConnector;
 
@@ -18,10 +19,20 @@ import kinomaniak.database.DBConnector;
 
 public class BeanManager {
     DBConnector db;
+    @ManagedProperty("#{user}")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
     ArrayList<Movie> movies = new ArrayList<Movie>();
     ArrayList<Attraction> attractions = new ArrayList<Attraction>();
     ArrayList<Product> products = new ArrayList<Product>();
-    ArrayList<Report> reports = new ArrayList<Report>();
+    ArrayList<ReportData> reports = new ArrayList<ReportData>();
     ArrayList<Res> res = new ArrayList<Res>();
     ArrayList<Show> shows = new ArrayList<Show>();
     ArrayList<Ticket> tickets = new ArrayList<Ticket>();
@@ -69,31 +80,70 @@ public class BeanManager {
         pr.buy();
 //        System.out.println(pr.getCount());
         db.update(pr);
-    }
-    
-    public void getReservation(int id, int uid){
+        this.saveReport(1, id); // 1 - Product
         
     }
     
-    public ArrayList<Movie> getMovies(){
-//        ArrayList<Movie> arr = new ArrayList<Movie>();
-        ArrayList<Object> a;
-        if(id == -1){
-            a = db.parser.load(db.getConnection(), "Movie");
-        }else{
-            a = db.parser.load(db.getConnection(), "Movie", id);
+    public void buyAttraction(int id){
+        Attraction at = (Attraction)db.parser.load(db.getConnection(), "Attraction", id).get(0);
+        System.out.println("AttrID: "+id);
+        this.saveReport(0, id); // 0 - Attraction
+        
+    }
+    
+    private void saveReport(int type, int oid){
+        ReportData rd = new ReportData();
+        rd.setObjectId(oid);
+        rd.setType(type); // 0 - Atraction
+        rd.setTimestamp(new java.sql.Timestamp((new java.util.Date()).getTime()));
+        rd.setUserId(user.getId());
+        db.save(rd);
+    }
+    
+    public void getReservation(List<Integer> list, int showid){
+        Res r = new Res();
+        r.setShowid(showid);
+        r.setSeat(this.parseReservationList(list));
+        r.setImienazwisko("NULL");
+        db.save(r);
+        saveReport(2, this.res.get(this.res.size()-1).getId()+1); // 2 - Res
+        
+    }
+    
+    public int[][] parseReservationList(List<Integer> list){
+        int res[][] = new int[list.size()][2];
+        int i = 0;
+        for(Integer r: list){
+            res[i][0] = r/10;
+            res[i][1] = r%10;
+            i++;
         }
-        for(Object obj : a){
-//            arr.add((Movie)obj);
-            this.movies.add((Movie)obj);
-        }        
+        return res;
+    }
+    
+    public ArrayList<Movie> getMovies(){
+        if(this.movies.isEmpty()){
+    //        ArrayList<Movie> arr = new ArrayList<Movie>();
+            ArrayList<Object> a;
+            if(id == -1){
+                a = db.parser.load(db.getConnection(), "Movie");
+            }else{
+                a = db.parser.load(db.getConnection(), "Movie", id);
+            }
+            for(Object obj : a){
+    //            arr.add((Movie)obj);
+                this.movies.add((Movie)obj);
+            }        
+        }
         return this.movies;
     }
     
     public ArrayList<Attraction> getAttractions() {
-        ArrayList<Object> a;
-        for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "Attraction") : db.parser.load(db.getConnection(), "Attraction", id)){
-            attractions.add((Attraction)obj);
+        if(this.attractions.isEmpty()){
+            ArrayList<Object> a;
+            for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "Attraction") : db.parser.load(db.getConnection(), "Attraction", id)){
+                attractions.add((Attraction)obj);
+            }
         }
         return attractions;
     }
@@ -108,9 +158,11 @@ public class BeanManager {
 //    }
     
     public ArrayList<CRoom> getRooms(){
-        ArrayList<Object> a;
-        for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "CRoom") : db.parser.load(db.getConnection(), "CRoom", id)){
-            rooms.add((CRoom)obj);
+        if(this.rooms.isEmpty()){
+            ArrayList<Object> a;
+            for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "CRoom") : db.parser.load(db.getConnection(), "CRoom", id)){
+                rooms.add((CRoom)obj);
+            }
         }
         return rooms;
     }
@@ -143,11 +195,11 @@ public class BeanManager {
 //        return arr;
 //    }
     
-    public ArrayList<Report> getReports(){
+    public ArrayList<ReportData> getReports(){
         if(this.reports.isEmpty()){
             ArrayList<Object> a;
-            for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "Report") : db.parser.load(db.getConnection(), "Report", id)){
-                reports.add((Report)obj);
+            for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "ReportData") : db.parser.load(db.getConnection(), "ReportData", id)){
+                reports.add((ReportData)obj);
             }
         }
         return reports;
