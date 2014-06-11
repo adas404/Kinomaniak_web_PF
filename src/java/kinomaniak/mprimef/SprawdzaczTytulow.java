@@ -6,7 +6,9 @@
 
 package kinomaniak.mprimef;
 
-import kinomaniak.beans.Movie;
+import java.util.ArrayList;
+import java.util.List;
+import kinomaniak.beans.Res;
 import kinomaniak.beans.Show;
 import kinomaniak.controllers.BeanManager;
 
@@ -14,6 +16,7 @@ import kinomaniak.controllers.BeanManager;
  *
  * @author Adam
  */
+
 public class SprawdzaczTytulow {
 
     public BeanManager getBeanManager() {
@@ -39,6 +42,7 @@ public class SprawdzaczTytulow {
                 return s.getFormatted();
         return null;
     }
+    
     public SprawdzaczTytulow() {
     }
     

@@ -7,10 +7,7 @@
 package kinomaniak.controllers;
 
 import java.util.ArrayList;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
+import java.util.List;
 import kinomaniak.beans.*;
 import kinomaniak.database.DBConnector;
 
@@ -67,6 +64,7 @@ public class BeanManager {
     
     public void buyProduct(int id){
         Product pr = (Product)db.parser.load(db.getConnection(), "Product", id).get(0);
+        System.out.println("ProdID: "+id);
 //        pr.setCount(pr.getCount()-1);
         pr.buy();
 //        System.out.println(pr.getCount());
@@ -127,9 +125,11 @@ public class BeanManager {
 //    }
     
     public ArrayList<Product> getProducts(){
-        ArrayList<Object> a;
-        for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "Product") : db.parser.load(db.getConnection(), "Product", id)){
-            products.add((Product)obj);
+        if(this.products.isEmpty()){
+            ArrayList<Object> a;
+            for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "Product") : db.parser.load(db.getConnection(), "Product", id)){
+                products.add((Product)obj);
+            }
         }
         return products;
     }
@@ -144,9 +144,11 @@ public class BeanManager {
 //    }
     
     public ArrayList<Report> getReports(){
-        ArrayList<Object> a;
-        for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "Report") : db.parser.load(db.getConnection(), "Report", id)){
-            reports.add((Report)obj);
+        if(this.reports.isEmpty()){
+            ArrayList<Object> a;
+            for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "Report") : db.parser.load(db.getConnection(), "Report", id)){
+                reports.add((Report)obj);
+            }
         }
         return reports;
     }
@@ -161,11 +163,21 @@ public class BeanManager {
 //    }
     
     public ArrayList<Res> getRes(){
+        if(this.res.isEmpty()){
         ArrayList<Object> a;
-        for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "Res") : db.parser.load(db.getConnection(), "Res", id)){
-            res.add((Res)obj);
+            for(Object obj : a = (id == -1) ? db.parser.load(db.getConnection(), "Res") : db.parser.load(db.getConnection(), "Res", id)){
+                res.add((Res)obj);
+            }
         }
         return res;
+    }
+    
+    public List<Integer> getResSeats(int id){
+        List<Integer> list = new ArrayList<Integer>();
+        for (Res r: this.getRes())
+            if(id == r.getShowid())
+                for(int s[]: r.getSeats()) list.add(s[0]*10+s[1]);
+        return list;
     }
     
 //    public ArrayList<Res> getRes(int id){
