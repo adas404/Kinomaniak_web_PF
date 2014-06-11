@@ -38,22 +38,32 @@
        
                 <p:layoutUnit position="center" style="text-align: center">
                     <h:form id="formatka">
-                        <p:panel id="basic" header="Produkty" >
-                            <h:panelGrid columns="5" cellpadding="10" >
-                                <ui:repeat value="#{beanManager.products}" var="product" >
-                                    <p:fieldset legend="#{product.name}" toggleable="true" collapsed="false">
-                                        <h:panelGrid columns="2" cellpadding="3" id="ppp">
-                                            <p:growl id="msgs" showDetail="true" life="2000"/>
-                                            <h:outputText value=""></h:outputText>
-                                            <h:outputText value="Ilość na magazynie: #{product.count}" rendered="true"></h:outputText>
-                                            <h:outputText value="Cena: #{product.price}"></h:outputText>
-                                            <p:commandButton action="#{beanManager.buyProduct(product.id)}" actionListener="#{powitanie.saveMessage}" value="Sprzedaj" update="ppp" rendered="#{product.count>0}">
-                                            </p:commandButton>
-                                        </h:panelGrid>
-                                    </p:fieldset>
-                                </ui:repeat>                           
-                            </h:panelGrid>
-                        </p:panel>
+                        <p:menubar>
+                            <p:submenu label="Użytkownicy">
+                                <p:menuitem value="Dodaj" url="dodaj_u.xhtml" />
+                                <p:menuitem value="Usuń" url="usun_u.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Film">
+                                <p:menuitem value="Dodaj" url="dodaj_f.xhtml" />
+                                <p:menuitem value="Usuń" url="usun_f.xhtml" />
+                            </p:submenu> 
+                            <p:submenu label="Show">
+                                <p:menuitem value="Dodaj" url="dodaj_s.xhtml" />
+                                <p:menuitem value="Usuń" url="usun_s.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Sale">
+                                <p:menuitem value="Dodaj" url="dodaj_cr.xhtml" />
+                                <p:menuitem value="Usuń" url="usun_cr.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Atrakcje">
+                                <p:menuitem value="Dodaj" url="dodaj_a.xhtml" />
+                                <p:menuitem value="Usuń" url="usun_a.xhtml" />
+                            </p:submenu> 
+                            <p:submenu label="Produkty">
+                                <p:menuitem value="Dodaj" url="dodaj_p.xhtml" />
+                                <p:menuitem value="Usuń" url="usun_p.xhtml" />
+                            </p:submenu> 
+                        </p:menubar>
                     </h:form>
                 </p:layoutUnit>
 

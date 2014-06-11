@@ -6,7 +6,7 @@
     <managed-bean>
         <managed-bean-name>beanManager</managed-bean-name>
         <managed-bean-class>kinomaniak.controllers.BeanManager</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>  
+        <managed-bean-scope>request</managed-bean-scope>  
     </managed-bean>
     <managed-bean>
         <managed-bean-name>user</managed-bean-name>
@@ -55,4 +55,14 @@
             <value>#{beanManager}</value>
         </managed-property>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>widokSala</managed-bean-name>
+        <managed-bean-class>kinomaniak.mprimef.WidokSala</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property> 
+            <property-name>beanManager</property-name>
+            <value>#{beanManager}</value>
+        </managed-property>
+    </managed-bean>
+    
 </faces-config>
