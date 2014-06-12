@@ -22,7 +22,7 @@ import kinomaniak.beans.*;
 public class DBConnector {
     private final static String DBURL = "jdbc:mysql://localhost:3306/test?characterEncoding=utf8";
     private final static String DBUSER = "root";
-    private final static String DBPASS = "123456789";
+    private final static String DBPASS = "gouranga5";
     private final static String DBDRIVER = "com.mysql.jdbc.Driver";
     
     private Connection connection;
