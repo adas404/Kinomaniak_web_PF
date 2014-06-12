@@ -71,7 +71,7 @@
                         <p:inputText id="nazwa" value="#{adminPanel.name}" /> 
                         <p:outputLabel value="Cena:"/>
                         <p:inputText id="cena" value="#{adminPanel.price}"/>
-                        <p:commandButton value="Zatwierdź" action="#{adminPanel.addAttraction()}"/>
+                        <p:commandButton value="Zatwierdź" action="#{adminPanel.addAttraction()}" onclick="location.href='panel.xhtml' " />
                     </h:panelGrid>
                     </h:form>
                 </p:layoutUnit>

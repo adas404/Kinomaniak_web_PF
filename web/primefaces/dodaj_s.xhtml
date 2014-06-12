@@ -68,8 +68,8 @@
                     <h:form id="formatka2" style="text-align: center" >
                     <h:panelGrid columns="2" style="text-align: center">
                         <p:outputLabel value="Wybierz sale na jakiej będzie grany seans:" />
-                        <p:selectOneMenu id="sala" value="#{widokSala.selectedOption}"> 
-                            <f:selectItems value="#{widokSala.selectedOption}" />
+                        <p:selectOneMenu id="sala" value="#{beanManager.rooms}"> 
+                            <f:selectItems value="#{beanManager.rooms.id}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="Wybierz jaki będzie grany na seansie:" />
                         <p:selectOneMenu id="film" value="#{widokSala.selectedOption}"> 
