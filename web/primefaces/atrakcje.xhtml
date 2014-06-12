@@ -46,7 +46,7 @@
                                             <p:growl id="msgs" showDetail="true" />
                                             <h:outputText value="#{attraction.id}"></h:outputText>
                                             <h:outputText value="Price: #{attraction.price}"></h:outputText>
-                                            <p:commandButton value="Sprzedaj" actionListener="#{attractionKomunikat.saveMessage()}" update="ppp" rendered="true">
+                                            <p:commandButton value="Sprzedaj" action="#{beanManager.buyAttraction(attraction.id)}" actionListener="#{attractionKomunikat.saveMessage()}" update="ppp" rendered="true">
                                             </p:commandButton>
                                         </h:panelGrid>
                                     </p:fieldset>

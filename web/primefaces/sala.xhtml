@@ -44,7 +44,7 @@
                                        <f:selectItem itemLabel="#{i}" itemValue="#{i}" itemDisabled="#{widokSala.czyNaLiscie(i)}"/>
                                    </c:forEach>
                                </p:selectManyButton>
-                               <p:commandButton value="wyswi"  actionListener="#{widokSala.wyswietlPrzekazane}" >
+                               <p:commandButton value="Sprzedaj"  action="#{widokSala.sprzedajemy()}" >
                                </p:commandButton>
                              </h:panelGrid>
                         

@@ -73,6 +73,10 @@ public class WidokSala {
     }
     private String passedParameter;
     
+    public void sprzedajemy(){
+        this.beanManager.getReservation(this.selectedOption, Integer.parseInt(this.passedParameter));
+    }
+    
     @PostConstruct
     public void init(){
         selectedOption = new ArrayList<Integer>();
