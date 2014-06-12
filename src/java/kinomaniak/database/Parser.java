@@ -246,6 +246,53 @@ public class Parser {
         return query;
     }
     
+    public String delete(String type, int id){
+        String query = "";
+        switch(type){
+            case "Movie":
+                query = "DELETE FROM Movie";
+                break;
+            case "CRoom":
+                query = "DELETE FROM CRoom";
+                break;
+            case "Attraction":
+                query = "DELETE FROM Attraction";
+                break;
+            case "GoldCard":
+                query = "DELETE FROM Goldcard";
+                break;
+            case "Product":
+                query = "DELETE FROM Product";
+                break;
+            case "Report":
+                query = "DELETE FROM Report";
+                break;
+            case "Res":
+                query = "DELETE FROM Res";
+                break;
+            case "Show":
+                query = "DELETE FROM Shows";
+                break;
+            case "Ticket":
+                query = "DELETE FROM Ticket";
+                break;
+            case "User":
+                query = "DELETE FROM Users";
+                break;
+            case "Time":
+                query = "DELETE FROM TimeDate";
+                break;
+            case "ReportData":
+//                query = "DELETE FROM ReportData"; 
+                // READ-ONLY
+                break;
+            default:
+                query = "DELETE FROM Dummy";
+        }
+        query += " WHERE id='"+id+"'";
+        return query;
+    }
+    
     public String save(Object obj){
         String query = "";
         if(obj instanceof Movie){
@@ -259,7 +306,7 @@ public class Parser {
             query = "INSERT INTO Attraction VALUES (NULL, '" + at.getName() + "', '" + at.getPrice() + "');";
         }else if(obj instanceof Product){
             Product pr = (Product) obj;
-            query = "INSERT INTO Product VALUES (NULL, '" + pr.getName() + "', '" + pr.getType() + "', '" + pr.getPrice() + "', '" + pr.getCount() + ",);";
+            query = "INSERT INTO Product VALUES (NULL, '" + pr.getName() + "', '" + pr.getType() + "', '" + pr.getPrice() + "', '" + pr.getCount() + "');";
         }else if(obj instanceof Report){
             Report rep = (Report) obj;
             

@@ -54,7 +54,7 @@
                              
                         </p:dataTable>
                         <p:commandButton value="Eksportuj pdf" ajax="false">
-                                <p:dataExporter type="pdf" target="tabela" fileName="rezerwacje" />
+                            <p:dataExporter type="pdf" target="tabela" fileName="rezerwacje" preProcessor="#{pdfLogo.preProcessPDF}"/>
                         </p:commandButton>
                         <p:commandButton value="Eksportuj xls" ajax="false">
                             <p:dataExporter type="xls" target="tabela" fileName="rezerwacje" />

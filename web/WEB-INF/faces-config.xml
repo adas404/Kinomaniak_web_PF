@@ -68,4 +68,9 @@
             <value>#{beanManager}</value>
         </managed-property>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>pdfLogo</managed-bean-name>
+        <managed-bean-class>kinomaniak.mprimef.pdfLogo</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

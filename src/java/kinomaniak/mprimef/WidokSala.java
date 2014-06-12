@@ -31,6 +31,15 @@ import org.jboss.logging.Property;
 public class WidokSala {
     private int idshow;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    private int id;
+
     public int getIdshow() {
         return idshow;
     }
@@ -74,13 +83,14 @@ public class WidokSala {
     private String passedParameter;
     
     public void sprzedajemy(){
-        this.beanManager.getReservation(this.selectedOption, Integer.parseInt(this.passedParameter));
+        System.out.println(this.selectedOption.get(0));
+        System.out.println(id); //problem z ID seansu!
+        //this.beanManager.getReservation(this.selectedOption, Integer.parseInt(this.passedParameter));
     }
     
     @PostConstruct
     public void init(){
         selectedOption = new ArrayList<Integer>();
-        int id = 0;
         if (this.getPassedParameter()!=null)
             id = Integer.parseInt(this.getPassedParameter());
         selectedOption = beanManager.getResSeats(id);
