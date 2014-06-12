@@ -41,8 +41,8 @@
                         <p:panel id="basic" header="Atrakcje">
                             <h:panelGrid columns="5" cellpadding="10"  >
                                 <ui:repeat value="#{beanManager.attractions}" var="attraction" >
-                                    <p:fieldset legend="#{attraction.name}" toggleable="true" collapsed="false">
-                                        <h:panelGrid columns="2" cellpadding="5" id="ppp">
+                                    <p:fieldset legend="#{attraction.name}" toggleable="true" collapsed="true">
+                                        <h:panelGrid columns="2" cellpadding="1" id="ppp">
                                             <p:growl id="msgs" showDetail="true" />
                                             <h:outputText value="#{attraction.id}"></h:outputText>
                                             <h:outputText value="Price: #{attraction.price}"></h:outputText>

@@ -20,9 +20,9 @@ import kinomaniak.beans.*;
  * @author Qbass
  */
 public class DBConnector {
-    private final static String DBURL = "jdbc:mysql://localhost:3306/test?characterEncoding=utf8";
+    private final static String DBURL = "jdbc:mysql://78.88.231.172:3306/test2?characterEncoding=utf8";
     private final static String DBUSER = "root";
-    private final static String DBPASS = "gouranga5";
+    private final static String DBPASS = "windowsshit";
     private final static String DBDRIVER = "com.mysql.jdbc.Driver";
     
     private Connection connection;
@@ -81,5 +81,9 @@ public class DBConnector {
     
     public ArrayList<Object> load(String type, int id){
         return this.parser.load(this.connection, type, id);
+    }
+    
+    public void delete(String type, int id){
+        this.parser.delete(this.connection, type, id);
     }
 }

@@ -68,16 +68,16 @@
                     <h:form id="formatka2" style="text-align: center" >
                     <h:panelGrid columns="2" style="text-align: center">
                         <p:outputLabel value="Wybierz sale na jakiej będzie grany seans:" />
-                        <p:selectOneMenu id="sala" value="#{beanManager.rooms}"> 
-                            <f:selectItems value="#{beanManager.rooms.id}" />
+                        <p:selectOneMenu id="sala" value="#{adminPanel.roomId}"> 
+                            <f:selectItems value="#{adminPanel.roomIds}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="Wybierz jaki będzie grany na seansie:" />
-                        <p:selectOneMenu id="film" value="#{widokSala.selectedOption}"> 
-                            <f:selectItems value="#{widokSala.selectedOption}" />
+                        <p:selectOneMenu id="film" value="#{adminPanel.movieId}"> 
+                            <f:selectItems value="#{adminPanel.movieIds}" />
                         </p:selectOneMenu>
                         <h:outputLabel value="Wybierz datę seansu:" />
-                        <p:calendar id="czas" value="#{beanManager.id}" pattern="MM/dd/yyyy HH:mm:ss" />
-                        <p:commandButton value="Zatwierdź" action="#"/>
+                        <p:calendar id="czas" value="#{adminPanel.date}" pattern="MM/dd/yyyy HH:mm:ss" />
+                        <p:commandButton value="Zatwierdź" action="#{adminPanel.addShow()}"/>
                     </h:panelGrid>
                     </h:form>
                 </p:layoutUnit>

@@ -38,20 +38,27 @@
        
                 <p:layoutUnit position="center" style="text-align: center">
                     <h:form id="formatka">
-                           <h:panelGrid columns="2" >
-                               <p:selectManyButton value="#{widokSala.selectedOption}" id="butony">
-                                   <c:forEach var="i" begin="1" end="100">
-                                       <f:selectItem itemLabel="#{i}" itemValue="#{i}" itemDisabled="#{widokSala.czyNaLiscie(i)}"/>
-                                   </c:forEach>
-                               </p:selectManyButton>
-                              
-                               <p:selectManyButton value="#{widokSala.wrocukryty}" >
-                                   <f:selectItems itemValue="#{widokSala.ukrytyprzycisk}" />
-                               </p:selectManyButton>
-                               <p:commandButton value="Sprzedaj" action="#{widokSala.sprzedaj}" />
-                             </h:panelGrid>
-                        
+                        <p:dataTable id="tabela" var="res" value="#{beanManager.res}">
+                            <p:column headerText="Numer rezerwacji">
+                                <h:outputText value="#{res.id}"/>
+                            </p:column>
+                            <p:column headerText="Imie i nazwisko" >
+                                <h:outputText value="#{res.name}"/>
+                            </p:column>
+                            <p:column headerText="Film" >
+                                <h:outputText value="#{sprawdzaczTytulow.sprawdzTytul(res.showID)}"/>
+                            </p:column>
+                            <p:column headerText="Film" >
+                                <h:outputText value="#{sprawdzaczTytulow.sprawdzDate(res.showID)}"/>
+                            </p:column>
                              
+                        </p:dataTable>
+                        <p:commandButton value="Eksportuj pdf" ajax="false">
+                            <p:dataExporter type="pdf" target="tabela" fileName="rezerwacje" preProcessor="#{pdfLogo.preProcessPDF}"/>
+                        </p:commandButton>
+                        <p:commandButton value="Eksportuj xls" ajax="false">
+                            <p:dataExporter type="xls" target="tabela" fileName="rezerwacje" />
+                        </p:commandButton>
                     </h:form>
                 </p:layoutUnit>
 

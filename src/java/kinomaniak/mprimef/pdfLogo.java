@@ -20,6 +20,7 @@ import javax.servlet.ServletContext;
  * @author Adam
  */
 public class pdfLogo {
+    private Image img;
 
     /**
      * Creates a new instance of pdfLogo
@@ -31,7 +32,9 @@ public class pdfLogo {
         System.out.println("logo");
         pdf.open();
         String logo2 = "/images/logotyp.jpg";
-        pdf.add(Image.getInstance(logo+logo2));
+        img = Image.getInstance(logo+logo2);
+        img.setAlignment(Image.ALIGN_CENTER);
+        pdf.add(img);
         
     }
     public pdfLogo() {

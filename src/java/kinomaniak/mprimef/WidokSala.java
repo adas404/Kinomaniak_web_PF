@@ -31,6 +31,29 @@ import org.jboss.logging.Property;
 public class WidokSala {
     private int idshow;
 
+
+    public void setUkrytyprzycisk(ArrayList<Integer> ukrytyprzycisk) {
+        this.ukrytyprzycisk = ukrytyprzycisk;
+    }
+    private List<Integer> ukrytyprzycisk;
+
+    public List<Integer> getUkrytyprzycisk() {
+        return ukrytyprzycisk;
+    }
+
+    public void setUkrytyprzycisk(List<Integer> ukrytyprzycisk) {
+        this.ukrytyprzycisk = ukrytyprzycisk;
+    }
+
+    public List<Integer> getWrocukryty() {
+        return wrocukryty;
+    }
+
+    public void setWrocukryty(List<Integer> wrocukryty) {
+        this.wrocukryty = wrocukryty;
+    }
+    private List<Integer> wrocukryty;
+    
     public int getId() {
         return id;
     }
@@ -82,18 +105,21 @@ public class WidokSala {
     }
     private String passedParameter;
     
-    public void sprzedajemy(){
+    public void sprzedaj(){
+        //System.out.println(this.wrocukryty.get(0));
         System.out.println(this.selectedOption.get(0));
-        System.out.println(id); //problem z ID seansu!
+        //problem z ID seansu!
         //this.beanManager.getReservation(this.selectedOption, Integer.parseInt(this.passedParameter));
     }
     
     @PostConstruct
     public void init(){
         selectedOption = new ArrayList<Integer>();
+        ukrytyprzycisk = new ArrayList<Integer>();
         if (this.getPassedParameter()!=null)
             id = Integer.parseInt(this.getPassedParameter());
         selectedOption = beanManager.getResSeats(id);
+        ukrytyprzycisk.add(id);
 
 
     }

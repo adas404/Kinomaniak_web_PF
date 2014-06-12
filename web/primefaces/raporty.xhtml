@@ -38,20 +38,21 @@
        
                 <p:layoutUnit position="center" style="text-align: center">
                     <h:form id="formatka">
-                           <h:panelGrid columns="2" >
-                               <p:selectManyButton value="#{widokSala.selectedOption}" id="butony">
-                                   <c:forEach var="i" begin="1" end="100">
-                                       <f:selectItem itemLabel="#{i}" itemValue="#{i}" itemDisabled="#{widokSala.czyNaLiscie(i)}"/>
-                                   </c:forEach>
-                               </p:selectManyButton>
-                              
-                               <p:selectManyButton value="#{widokSala.wrocukryty}" >
-                                   <f:selectItems itemValue="#{widokSala.ukrytyprzycisk}" />
-                               </p:selectManyButton>
-                               <p:commandButton value="Sprzedaj" action="#{widokSala.sprzedaj}" />
-                             </h:panelGrid>
+                        <p:panelGrid columns="2">
+                        <p:commandButton value="Raport sprzedażowy całodzienny" ajax="false" action="calodzienny.xhtml">
+                        </p:commandButton>   
+                        <p:calendar id="czas" value="#{adminPanel.date}" pattern="MM/dd/yyyy HH:mm:ss" />
+                        </p:panelGrid>
+                        <p:panelGrid columns="3">
+                        <p:commandButton value="Generuj raport użytkownika" ajax="false">
+                            <p:dataExporter type="xls" target="tabela" fileName="rezerwacje" />
+                        </p:commandButton>
+                        <p:calendar value="#{adminPanel.date}" pattern="MM/dd/yyyy HH:mm:ss" />
+                        <p:selectOneMenu id="typ" value="#{adminPanel.userr}"> 
+                            <f:selectItems value="#{adminPanel.users}" />
+                        </p:selectOneMenu>
+                        </p:panelGrid>
                         
-                             
                     </h:form>
                 </p:layoutUnit>
 

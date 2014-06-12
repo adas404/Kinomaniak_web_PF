@@ -41,7 +41,7 @@
                         <p:panel id="basic" header="Produkty" >
                             <h:panelGrid columns="5" cellpadding="10" >
                                 <ui:repeat value="#{beanManager.products}" var="product" >
-                                    <p:fieldset legend="#{product.name}" toggleable="true" collapsed="false">
+                                    <p:fieldset legend="#{product.name}" toggleable="true" collapsed="true">
                                         <h:panelGrid columns="2" cellpadding="3" id="ppp">
                                             <p:growl id="msgs" showDetail="true" life="2000"/>
                                             <h:outputText value=""></h:outputText>
