@@ -38,25 +38,30 @@
        
                 <p:layoutUnit position="center" style="text-align: center">
                     <h:form id="formatka">
-                        <p:panelGrid columns="2">
-                        <p:commandButton value="Raport sprzedażowy całodzienny" ajax="false" action="ogolny.xhtml">
-                        </p:commandButton>   
-                        </p:panelGrid>
-                        <p:panelGrid columns="2">
-                        <p:commandButton value="Raport sprzedażowy całodzienny" ajax="false" action="calodzienny.xhtml">
-                        </p:commandButton>   
-                        <p:calendar id="czas" value="#{adminPanel.date}" pattern="MM/dd/yyyy HH:mm:ss" />
-                        </p:panelGrid>
-                        <p:panelGrid columns="3">
-                        <p:commandButton value="Generuj raport użytkownika" ajax="false">
+                        <p:dataTable id="tabela" var="rds" value="#{reports.rds}">
+                            <p:column headerText="Numer raportu">
+                                <h:outputText value="#{rds.id}"/>
+                            </p:column>
+                            <p:column headerText="Identyfikator sprzedanej rzeczy" >
+                                <h:outputText value="#{rds.objectId}"/>
+                            </p:column>
+                            <p:column headerText="Typ sprzedaży" >
+                                <h:outputText value="#{rds.type}"/>
+                            </p:column>
+                            <p:column headerText="Użytkownik:" >
+                                <h:outputText value="#{rds.userId}"/>
+                            </p:column>
+                             <p:column headerText="Data:" >
+                                 <h:outputText value="#{rds.timestamp}"/>
+                            </p:column>
+                             
+                        </p:dataTable>
+                        <p:commandButton value="Eksportuj pdf" ajax="false">
+                            <p:dataExporter type="pdf" target="tabela" fileName="rezerwacje" preProcessor="#{pdfLogo.preProcessPDF}"/>
+                        </p:commandButton>
+                        <p:commandButton value="Eksportuj xls" ajax="false">
                             <p:dataExporter type="xls" target="tabela" fileName="rezerwacje" />
                         </p:commandButton>
-                        <p:calendar value="#{adminPanel.date}" pattern="MM/dd/yyyy HH:mm:ss" />
-                        <p:selectOneMenu id="typ" value="#{adminPanel.userr}"> 
-                            <f:selectItems value="#{adminPanel.users}" />
-                        </p:selectOneMenu>
-                        </p:panelGrid>
-                        
                     </h:form>
                 </p:layoutUnit>
 
