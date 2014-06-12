@@ -68,10 +68,10 @@
                     <h:form id="formatka2" style="text-align: center" >
                     <h:panelGrid columns="2" style="text-align: center">
                         <p:outputLabel value="Nazwa:"/>
-                        <p:inputText id="tytul" /> 
+                        <p:inputText id="nazwa" value="#{adminPanel.name}" /> 
                         <p:outputLabel value="Cena:"/>
-                        <p:inputText />
-                        <p:commandButton value="Zatwierdź" action="#"/>
+                        <p:inputText id="cena" value="#{adminPanel.price}"/>
+                        <p:commandButton value="Zatwierdź" action="#{adminPanel.addAttraction()}"/>
                     </h:panelGrid>
                     </h:form>
                 </p:layoutUnit>
